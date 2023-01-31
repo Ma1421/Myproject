@@ -17,6 +17,13 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['string', 'max:255'],
+            'body' => ['string', 'nullable'],
+            'country' => ['string', 'nullable'],
+            'live' => ['string', 'nullable'],
+            'occupation' => ['string', 'nullable'],
+            'departure' => ['date', 'nullable'],
+            'return' => ['date', 'nullable'],
+            'image' =>['mimes:jpg,jpeg,png', 'nullable'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }
