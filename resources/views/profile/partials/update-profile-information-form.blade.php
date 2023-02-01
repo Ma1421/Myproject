@@ -22,6 +22,39 @@
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+        <div>
+             <x-input-label for="comment" :value="__('Comment')" />
+            <textarea id="comment" placeholder="self introduction" name="body" :value="olid('body', $user->body)" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('body', $user->body) }}</textarea>
+        </div>
+        <div>
+            <x-input-label for="country" :value="__('Country')" />
+            <x-text-input id="country" name="country" type="text" class="mt-1 block w-full" :value="old('country', $user->country)"/>
+
+        </div>
+        <div>
+            <x-input-label for="departure" :value="__('Departure date')" />
+            <x-text-input id="departure" name="departure" type="date" class="mt-1 block w-full" :value="old('departure', $user->departure)"/>
+
+        </div>
+        <div>
+            <x-input-label for="return" :value="__('Return date')" />
+            <x-text-input id="return" name="return" type="date" class="mt-1 block w-full" :value="old('return', $user->return)"/>
+
+        </div>
+        <div>
+            <x-input-label for="live" :value="__('Live')" />
+            <x-text-input id="live" name="live" type="text" class="mt-1 block w-full" :value="old('live', $user->live)"/>
+
+        </div>
+         <div>
+            <x-input-label for="image" :value="__('Image')" />
+            <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)"/>
+
+        </div>
+        <div>
+            <x-input-label for="occupation" :value="__('Occupation')" />
+            <x-text-input id="occupation" name="occupation" type="text" class="mt-1 block w-full" :value="old('occupation', $user->occupation)"/>
+
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
