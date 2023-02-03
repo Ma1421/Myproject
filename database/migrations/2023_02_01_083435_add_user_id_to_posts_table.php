@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->string('image')->nullable();
+        Schema::table('posts', function (Blueprint $table) {
+    
+        $table->foreignId('user_id')->constrained();   
+        //'category_id' は 'categoriesテーブル' の 'id' を参照する外部キーです
+
         });
     }
 
@@ -26,9 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             //
         });
     }
 };
-
