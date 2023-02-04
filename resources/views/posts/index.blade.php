@@ -11,11 +11,13 @@
         <h1>Timeline</h1>
         <div class='posts'>
             @foreach ($posts as $post)
-                <div class='post'>
-                    <h2 class='title'>{{ $post->title }}</h2>
+                 <div class='post'>
+                    <a href="/posts/{{ $post ->id }}">
                     <p class='body'>{{ $post->body }}</p>
+                    </a>
                 </div>
             @endforeach
         </div>
+        <a href='/posts/create'>create</a>
     </body>
 </html>
