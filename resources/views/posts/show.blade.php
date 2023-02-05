@@ -12,6 +12,9 @@
                 <a href="/posts/{{ $post->id }}/edit">edit</a>
             </div>
         </div>  
+        <div>
+                <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+            </div>
         <div class="footer">
             <a href="/">戻る</a>
 </x-app-layout>
