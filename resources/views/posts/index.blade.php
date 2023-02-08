@@ -8,18 +8,22 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        <x-app-layout>
         <h1>Timeline</h1>
         <div class='posts'>
             @foreach ($posts as $post)
                  <div class='post'>
                     <a href="/posts/{{ $post ->id }}">
-                    <p class='body'>{{ $post->body }}</p>
+                    <h3 class='body'>{{ $post->body }}</h3>
                     </a>
+                    <p>{{$post->user->name}}</p>
+                    @if($post->user_id == Auth::user()->id)
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
                     </form>
+                    @endif
                 </div>
             @endforeach
         </div>
@@ -32,5 +36,6 @@
         }
     }
 </script>
+    </x-app-layout>
     </body>
 </html>
