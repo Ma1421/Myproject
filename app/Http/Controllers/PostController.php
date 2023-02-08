@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary;  //use宣言する
@@ -26,21 +27,32 @@ class PostController extends Controller
     
     public function store(Request $request, Post $post)//
     {
-        $user_id=Auth::id();
-        $input = $request['post'];
-        $post->user_id=$user_id; //データベースのuser_idに$user_idを保存
-        $post->fill($input)->save();
+         $input = $request['post'];
+        if($request->file("image") !=  null){
+            $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $input += ['image_url' => $image_url];//要確認：$input = $input + ['image_url' => $image_url]の省略形
+
+        };
+
+ 
         //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
-        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        dd($image_url);  //画像のURLを画面に表示
-        $input += ['image_url' => $image_url];//要確認：$input = $input + ['image_url' => $image_url]の省略形
+        
+        $user_id=Auth::id();
+       
+        $post->user_id=$user_id; //データベースのuser_idに$user_idを保存
+        
+        
+        $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
         
     }
     
-    public function show(Post $post)
+    public function show(Post $post)//$postの中に詳細ページに表示するデータが入っている、web.phpの｛｝の中に1という数字が入ったら
+    //postsテーブルのid1のデータが格納される
     {
-        return view('posts/show')->with(['post' => $post]);
+        $comments = Comment::where("post_id", $post->id)->get();//where(検索対象,比較するデータ)
+
+        return view('posts/show')->with(['post' => $post, 'comments'=> $comments]);//bladeファイルにデータを渡す処理
     }
     
     public function delete(Post $post)

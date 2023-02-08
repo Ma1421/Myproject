@@ -12,9 +12,28 @@
                 <a href="/posts/{{ $post->id }}/edit">edit</a>
             </div>
         </div>  
+        
         <div>
-                <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+            <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+        </div>
+            
+        <form action="/comments/{{$post->id}}" method="POST">
+            <!--enctype=ファイルを送信する際にデータの形式を決めるもの
+            様々なファイルを添付することができるmultipart/form-data-->
+            @csrf
+            <div class="body">
+                <h2>Create comment</h2>
+                <textarea name="comment" placeholder="コメントを入力してください"></textarea>
             </div>
+            
+            <input type="submit" value="store"/>
+        </form>
+        <div>
+            @foreach($comments as $comment)
+                <p>{{$comment->comment}}</p>
+            @endforeach
+        </div>
+        
         <div class="footer">
             <a href="/">戻る</a>
 </x-app-layout>
