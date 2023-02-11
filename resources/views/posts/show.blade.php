@@ -34,6 +34,8 @@
             @endforeach
         </div>
         
-        <div class="footer">
-            <a href="/">戻る</a>
+        <button onclick="like({{$post->id}})">いいね</button><!--いいねボタン onclick=jsファイルを読み込む-->
+        <button onclick="unlike({{$post->id}})">いいね解除</button>
+        <a href="/">戻る</a>
+        
 </x-app-layout>

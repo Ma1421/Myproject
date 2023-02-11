@@ -23,6 +23,7 @@
                         @method('DELETE')
                         <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
                     </form>
+                    <button onclick="like({{$post->id}})">いいね</button><!--いいねボタン-->
                     @endif
                 </div>
             @endforeach
