@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\LikeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +43,9 @@ Route::post('/comments/{post}', [CommentsController::class, 'store']);
 Route::post('/articles/{comment_id}/comments','CommentsController@store');
 //コメント取消処理
 Route::get('/comments/{comment_id}', 'CommentsController@destroy');
+
+Route::post('/like/{postId}',[LikeController::class,'store']);
+Route::post('/unlike/{postId}',[LikeController::class,'destroy']);
 
 
 
