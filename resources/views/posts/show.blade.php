@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout><!--詳細ページ-->
     <x-slot name="header">
         　Show
     </x-slot>
@@ -34,8 +34,12 @@
             @endforeach
         </div>
         
-        <button onclick="like({{$post->id}})">いいね</button><!--いいねボタン onclick=jsファイルを読み込む-->
-        <button onclick="unlike({{$post->id}})">いいね解除</button>
+        @if(Auth::user()->isLike($post->id))<!--今ログインしているユーザーがLikeしているか-->
+                    
+                    <button onclick="unlike({{$post->id}})">いいね解除</button>
+                    @else
+                    <button onclick="like({{$post->id}})">いいね</button><!--いいねボタン-->
+                    @endif
         <a href="/">戻る</a>
         
 </x-app-layout>
