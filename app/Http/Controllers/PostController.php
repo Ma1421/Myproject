@@ -14,8 +14,7 @@ class PostController extends Controller
     {
        $id = Auth::id();// 今ログインしているユーザーのIDをとってくる処理
 
-        
-        return view('posts/index')->with(['posts' => $post->get()]);  
+        return view('index')->with(['posts' => $post->get()]);
        //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
        //$post->geet()で、データベースのpostsテーブルからすべてのデータをとってくる→bladeファイルを表示させる
     }
