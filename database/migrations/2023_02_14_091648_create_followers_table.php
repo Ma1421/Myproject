@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('follower_user', function (Blueprint $table) {
-            /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-     
-            $table->unsignedInteger('user_id'); // 追加
-            $table->unsignedInteger('follower_id'); // 追加
-            // $table->timestamps(); 削除
+        Schema::create('followers', function (Blueprint $table) {
+            $table->primary(["following_id", "followed_id"]);
+            $table->foreignId("following_id")->constrained("users");
+            $table->foreignId("followed_id")->constrained("users");
         });
     }
 
@@ -33,6 +27,12 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('follower_user');
+        Schema::dropIfExists('followers');
     }
 };
+
+
+
+
+
+

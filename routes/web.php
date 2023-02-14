@@ -32,7 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/users', [UserController::class, 'index']);//ユーザー一覧表示
 Route::get('/users/{user}', [UserController::class, 'show']);//{user}例えば１なら１のユーザーのデータが表示できる
+Route::post("/follow/{user}", [UserController::class, "follow"])->name("follow");
+Route::post("/unfollow/{user}", [UserController::class, "unfollow"])->name("unfollow");
 
 Route::get('/posts/create', [PostController::class, 'create']);//投稿フォームの表示
 Route::post('/posts', [PostController::class, 'store']);//画像を含めた投稿の保存処理
@@ -49,6 +53,8 @@ Route::get('/comments/{comment_id}', 'CommentsController@destroy');
 
 Route::post('/like/{postId}',[LikeController::class,'store']);
 Route::post('/unlike/{postId}',[LikeController::class,'destroy']);
+
+
 
 
 
