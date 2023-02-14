@@ -85,14 +85,17 @@ class User extends Authenticatable
       }
     }
     
-    public function follows()
+    public function follows()//自分がフォローしている人を取得する
     {
-        return $this->belongsToMany(User::class, 'follower_user', 'follower_id', 'user_id');
-    }
+        return $this->belongsToMany(User::class, "followers", "following_id", "followed_id");
+    }//第2引数はオリジナルの名前を付けた時はLaravelが認識するために必須、第3引数が自分側、第4引数は相手側
 
-    public function followers()
+    public function followers()//自分をフォローしている人を取得する
     {
-        return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id');
+        return $this->belongsToMany(User::class, "followers", "followed_id", "following_id");
     }
+    
+    
+    
 
 }
