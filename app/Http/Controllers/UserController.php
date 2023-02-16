@@ -22,13 +22,15 @@ class UserController extends Controller
     public function follow(User $user)
     {
         auth()->user()->follows()->attach($user);//中間テーブルのデータ保存
-        return redirect("/users");
+        //return redirect("/users");
+        return back();
     }
 
     public function unfollow(User $user)
     {
         auth()->user()->follows()->detach($user);//中間テーブルデータ削除
-        return redirect("/users");
+       // return redirect("/users");
+        return back();
     }
     
     
