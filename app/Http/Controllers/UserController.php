@@ -18,6 +18,7 @@ class UserController extends Controller
     }
     //$userに'user'と名前を付けて（代入）bladeファイル内で使えるようにする
     
+    
     public function follow(User $user)
     {
         auth()->user()->follows()->attach($user);//中間テーブルのデータ保存
