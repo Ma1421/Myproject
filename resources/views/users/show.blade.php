@@ -2,22 +2,24 @@
 <x-app-layout><!--詳細ページ-->
     <x-slot name="header">
         　Profile
- <div class="d-flex justify-content-end flex-grow-1">
-                               @if(Auth::id() != $user_flg)
-                               @if (Auth::user()->isFollowing($user->id))
-                                   <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
-                                       {{ csrf_field() }}
-                                       {{ method_field('DELETE') }}
- 
-                                       <button type="submit" class="btn btn-danger">フォロー解除</button>
-                                   </form>
-                               @else
-                                   <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
-                                       {{ csrf_field() }}
- 
-                                       <button type="submit" class="btn btn-primary">フォローする</button>
-                                   </form>
-                               @endif
-                               @endif
+ <div class="flex justify-between mx-10 my-5 px-10 py-4 rounded shadow-xl bg-white">
+                    <div>
+                        <a href="/users/{{$user->id}}">{{$user->name}}</a>
+                    </div>
+                    <div>
+                        フォロワー : {{$user->followers->count()}}
+                    </div>
+                    @if (auth()->user()->follows->contains($user->id))<!--フォローしてるかしてないか-->
+                        <form action={{route("unfollow", $user->id)}} method="POST">
+                            @csrf
+                            <button class="px-2 py-1 rounded-md font-bold bg-gray-100 text-black border border-black shadow hover:bg-opacity-70 active:scale-95 duration-200">フォロー解除</button>
+                        </form>
+                    @else
+                        <form action={{route("follow", $user->id)}} method="POST">
+                            @csrf
+                            <button class="px-2 py-1 rounded-md font-bold bg-blue-500 text-white shadow hover:bg-opacity-70 active:scale-95 duration-200">フォローする</button>
+                        </form>
+                    @endif
+                </div>
         
 </x-app-layout>

@@ -7,7 +7,7 @@
             @if (auth()->id() != $user->id)<!--自分以外のユーザー-->
                 <div class="flex justify-between mx-10 my-5 px-10 py-4 rounded shadow-xl bg-white">
                     <div>
-                        {{$user->name}}
+                        <a href="/users/{{$user->id}}">{{$user->name}}</a>
                     </div>
                     <div>
                         フォロワー : {{$user->followers->count()}}
