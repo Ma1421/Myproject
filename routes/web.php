@@ -19,7 +19,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-
+Route::get('/', function (){
+    return view ('auth.index');
+});
 
 
 Route::get('/dashboard', function () {
@@ -27,16 +29,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [PostController::class, 'index'])->name('index');
+    Route::get('/posts', [PostController::class, 'index'])->name('index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/users', [UserController::class, 'index']);//ユーザー一覧表示
+    Route::get('/users/{user}', [UserController::class, 'show']);//{user}例えば１なら１のユーザーのデータが表示できる
+    Route::post("/follow/{user}", [UserController::class, "follow"])->name("follow");
+    Route::post("/unfollow/{user}", [UserController::class, "unfollow"])->name("unfollow");
 });
 
-Route::get('/users', [UserController::class, 'index']);//ユーザー一覧表示
-Route::get('/users/{user}', [UserController::class, 'show']);//{user}例えば１なら１のユーザーのデータが表示できる
-Route::post("/follow/{user}", [UserController::class, "follow"])->name("follow");
-Route::post("/unfollow/{user}", [UserController::class, "unfollow"])->name("unfollow");
+
 
 Route::get('/posts/create', [PostController::class, 'create']);//投稿フォームの表示
 Route::post('/posts', [PostController::class, 'store']);//画像を含めた投稿の保存処理
