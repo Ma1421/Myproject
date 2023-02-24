@@ -1,0 +1,19 @@
+.container {
+    text-align: center;
+    /* 水平方向の中央揃え */
+    margin-top: 20%;
+}
+
+h1{
+    font-size:  4rem;
+    color: white;
+    font-family: 'Philosopher', 'serif';
+}
+
+.button{
+    font-size: 2rem;
+}
+body{
+    background-image: url(top.jpg);
+    background-color: #00a9ff;
+}
