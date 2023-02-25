@@ -6,10 +6,11 @@
         <!-- Fonts 
         -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('/css/timeline.css') }}" >
     </head>
     <body>
         <x-app-layout>
-        <h1>Timeline</h1>
+            <br>
         <div class='posts'>
             @foreach ($posts as $post)
                  <div class='post'>
@@ -35,9 +36,10 @@
                     <button onclick="like({{$post->id}})">いいね</button><!--いいねボタン-->
                     @endif
                 </div>
+                <br>
             @endforeach
+            
         </div>
-        <a href='/posts/create'>create</a>
         <script>
                 function deletePost(id) {
                     'use strict'

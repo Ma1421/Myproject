@@ -1,7 +1,8 @@
-<x-guest-layout>
+<x-guest-layout><!--gest.blade.phpからビューの継承-->
     <link rel="stylesheet" href="{{ asset('/css/login.css')  }}" >
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+    <link rel="stylesheet" href="{{ asset('/css/timeline.css') }}" >
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

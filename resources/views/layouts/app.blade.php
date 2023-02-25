@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>?<!--親ファイル（ビューの継承）-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -30,7 +30,7 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                {{ $slot }}<!--ここが各ブレードファイルごとの部分-->
             </main>
         </div>
     </body>

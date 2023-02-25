@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+console.log('test');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -13,6 +14,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: theme => ({
+             'login-image': "url('../../public/css/top.jpg')",
+            })
         },
     },
 

@@ -5,6 +5,7 @@
         <title>Create</title>
     </head>
     <body>
+        <x-app-layout>
         <form action="/posts" method="POST" enctype="multipart/form-data">
             <!--enctype=ファイルを送信する際にデータの形式を決めるもの
             様々なファイルを添付することができるmultipart/form-data-->
@@ -22,5 +23,6 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        </x-app-layout>
     </body>
 </html>

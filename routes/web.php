@@ -37,11 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}', [UserController::class, 'show']);//{user}例えば１なら１のユーザーのデータが表示できる
     Route::post("/follow/{user}", [UserController::class, "follow"])->name("follow");
     Route::post("/unfollow/{user}", [UserController::class, "unfollow"])->name("unfollow");
+    Route::get('/posts/create', [PostController::class, 'create'])->name("create");//投稿フォームの表示
 });
 
 
 
-Route::get('/posts/create', [PostController::class, 'create']);//投稿フォームの表示
+
 Route::post('/posts', [PostController::class, 'store']);//画像を含めた投稿の保存処理
 Route::get('/posts/{post}', [PostController::class, 'show']);//投稿詳細画面の表示
 

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100"><!--上のバーの部分-->
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -16,6 +16,10 @@
                         {{ __('Index') }}
                     </x-nav-link>
                 </div>
+                
+                <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
+                        {{__('create')}} 
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->
