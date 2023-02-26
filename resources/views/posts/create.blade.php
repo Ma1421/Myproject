@@ -12,8 +12,10 @@
             @csrf
             <div class="body">
                 <h2>Create post</h2>
+                <br>
                 <textarea name="post[body]" placeholder="留学の思い出、お役立ち情報など"></textarea>
             </div>
+            <br>
             <div class="image">
                 <input type="file" name="image">
                 <!--type属性=file...ファイルをアップロード-->
