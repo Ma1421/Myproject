@@ -13,13 +13,17 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
-                        {{ __('Index') }}
+                        {{ __('Home') }}
                     </x-nav-link>
                 </div>
                 
                 <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
                         {{__('create')}} 
                 </x-nav-link>
+                
+               
+                
+                
             </div>
 
             <!-- Settings Dropdown -->

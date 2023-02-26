@@ -13,21 +13,24 @@
             <br>
         <div class='posts'>
             @foreach ($posts as $post)
+                
                  <div class='post'>
+                    <a href="/users/{{$post->user->id}}">
+                        <p>{{$post->user->name}}</p><!--投稿者の名前を推したら上のURLに飛ぶ-->
+                        </a>
                     <a href="/posts/{{ $post ->id }}">
                     <h3 class='body'>{{ $post->body }}</h3>
                     </a>
-                    <a href="/users/{{$post->user->id}}">
-                    <p>{{$post->user->name}}</p><!--投稿者の名前を推したら上のURLに飛ぶ-->
-                    </a>
                     
-                    @if($post->user_id == Auth::user()->id)<!--投稿した人とログインした人が一緒の場合以下の処理を行う-->
-                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
-                    </form>
-                    @endif
+                    <div>
+            <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+        </div>
+            
+        <form action="/comments/{{$post->id}}" method="POST">
+                    
+                    
+                    <div class="flex">
+                    
                     
                     @if(Auth::user()->isLike($post->id))<!--今ログインしているユーザーがLikeしているか-->
                     
@@ -35,6 +38,17 @@
                     @else
                     <button onclick="like({{$post->id}})">いいね</button><!--いいねボタン-->
                     @endif
+                    
+                    <br>
+                    
+                    @if($post->user_id == Auth::user()->id)<!--投稿した人とログインした人が一緒の場合以下の処理を行う-->
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{ $post->id }})" class="delete">delete</button> 
+                    </form>
+                    @endif
+                    </div>
                 </div>
                 <br>
             @endforeach

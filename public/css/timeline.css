@@ -4,3 +4,12 @@
 
 	
 }
+
+.flex{
+　display:flex;
+}
+
+.delete{
+    position:relative;
+    left:1200px;
+}
