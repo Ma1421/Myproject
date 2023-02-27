@@ -1,4 +1,4 @@
-<!DOCTYPE html>?<!--親ファイル（ビューの継承）-->
+<!DOCTYPE html><!--親ファイル（ビューの継承）-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
