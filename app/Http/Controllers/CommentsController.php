@@ -25,10 +25,10 @@ class CommentsController extends Controller
        return redirect('/');
    }
 
-    public function destroy(Request $request)
-    {
-        $comment = Comment::find($request->comment_id);
-        $comment->delete();
-        return redirect('/');
-    }
+    // public function destroy(Request $request)
+    // {
+    //     $comment = Comment::find($request->comment_id);
+    //     $comment->delete();
+    //     return redirect('/');
+    // }
 }

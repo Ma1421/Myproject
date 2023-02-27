@@ -1,4 +1,4 @@
-console.log('aaa');
+
 function like(postId) {
   $.ajax({
     headers: {

@@ -47,16 +47,15 @@ Route::post('/posts', [PostController::class, 'store']);//画像を含めた投�
 Route::get('/posts/{post}', [PostController::class, 'show']);//投稿詳細画面の表示
 
 Route::delete('/posts/{post}', [PostController::class,'delete']);
-
-Route::post('/comments/{post}', [CommentsController::class, 'store']);
-
-//コメント投稿処理
-Route::post('/articles/{comment_id}/comments','CommentsController@store');
-//コメント取消処理
-Route::get('/comments/{comment_id}', 'CommentsController@destroy');
-
 Route::post('/like/{postId}',[LikeController::class,'store']);
 Route::post('/unlike/{postId}',[LikeController::class,'destroy']);
+
+//コメント投稿処理
+Route::post('/comments/{post}', [CommentsController::class, 'store']);
+//コメント取消処理
+//Route::delete('/comments/{comment_id}', [CommentsController::class, 'destroy']);
+
+
 
 
 

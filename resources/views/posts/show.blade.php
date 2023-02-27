@@ -14,7 +14,7 @@
         </div>  
         
         <div>
-            <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+            <img src="{{ $post->image_url }}"/>
         </div>
             
         <form action="/comments/{{$post->id}}" method="POST">
