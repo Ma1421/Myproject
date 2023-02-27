@@ -12,7 +12,6 @@
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
-
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
@@ -30,32 +29,27 @@
         <div>
             <x-input-label for="country" :value="__('Country')" />
             <x-text-input id="country" name="country" type="text" class="mt-1 block w-full" :value="old('country', $user->country)"/>
-        
         </div>
         <div>
             <x-input-label for="departure" :value="__('Departure date')" />
             <x-text-input id="departure" name="departure" type="date" class="mt-1 block w-full" :value="old('departure', $user->departure)"/>
-        
         </div>
         <div>
             <x-input-label for="return" :value="__('Return date')" />
             <x-text-input id="return" name="return" type="date" class="mt-1 block w-full" :value="old('return', $user->return)"/>
-        
         </div>
         <div>
             <x-input-label for="live" :value="__('Live')" />
             <x-text-input id="live" name="live" type="text" class="mt-1 block w-full" :value="old('live', $user->live)"/>
-        
         </div>
          <div>
             <x-input-label for="image" :value="__('Image')" />
             <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)"/>
-        
         </div>
         <div>
             <x-input-label for="occupation" :value="__('Occupation')" />
             <x-text-input id="occupation" name="occupation" type="text" class="mt-1 block w-full" :value="old('occupation', $user->occupation)"/>
-        
+
         </div>
         <div>
             <x-input-label for="email" :value="__('Email')" />

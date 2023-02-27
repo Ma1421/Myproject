@@ -24,9 +24,11 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('live')->nullable();
             $table->string('occupation')->nullable();
+            $table->string('image')->nullable();
             $table->date('departure')->nullable();
             $table->date('return')->nullable();
             $table->timestamps();
+            
         });
     }
 

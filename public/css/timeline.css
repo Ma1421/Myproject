@@ -1,0 +1,15 @@
+.post{
+	border-bottom: 2px solid #888;
+    border-top: 2px solid #888;
+
+	
+}
+
+.flex{
+　display:flex;
+}
+
+.delete{
+    position:relative;
+    left:1200px;
+}
