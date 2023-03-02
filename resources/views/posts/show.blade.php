@@ -4,7 +4,7 @@
     </x-slot>
         <div class='content'>
             <div class="content_post">
-                <h3>本文</h3>
+                
                 <p class="body">{{ $post->body }}</p>
                 
             </div>
@@ -22,7 +22,9 @@
             様々なファイルを添付することができるmultipart/form-data-->
             @csrf
             <div class="body">
-                <h2>Create comment</h2>
+                
+                <br>
+                
                 <textarea name="comment" placeholder="コメントを入力してください"></textarea>
             </div>
             
